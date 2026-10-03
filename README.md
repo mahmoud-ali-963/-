@@ -3,38 +3,37 @@
 
 This GitHub Actions workflow automatically builds **Linux** and **Windows export templates** from the **latest stable version of Godot Engine**, with added security using an **AES-256 script** for protecting your game scripts.
 
-## 🎯 Features
+## 🎯 المميزات الرئيسية
 
-- ✅ Clones latest **Godot Engine** source
-- 🔐 Integrates AES-256 encryption script for secure builds
-- ⚙️ Builds export templates for:
-  - 🐧 Linux
-  - 🪟 Windows
-- 💾 Uses SCons with LTO optimizations
-- 📦 Uploads `.zip` export templates as artifacts
-- ☁️ Caches build output to speed up rebuilds
+- ✅ سحب واستنساخ أحدث مصدر رسمي لـ محرك Godot
+- 🔐 دمج تشفير AES-256 لضمان بناء محرك وقوالب آمنة
+- ⚙️ بناء قوالب التصدير لكل من:
+  -  Android
+  -  Windows
+- 📦 رفع قوالب التصدير بصيغة ملفات ضغط .zip جاهزة للتحميل
+- ☁️ تفعيل التخزين المؤقت (Caching) لتسريع عمليات البناء القادمة
 
 ---
 
-## 📦 Build Artifacts
+## 📦 ملفات البناء الجاهزة (Artifacts)
 
 | Platform | Artifact |
 |----------|----------|
-| 🐧 Linux  | `export_templates_linux.zip` |
-| 🪟 Windows| `export_templates_windows.zip` |
+| Android  | `android-export-templates.zip` |
+| 🪟 Windows| `windows-export-templates.zip` |
 
-➡️ Download them from the **GitHub Actions run artifacts** once the workflow completes.
+➡️ يمكنك تحميلها مباشرة من قسم Artifacts في صفحة GitHub Actions فور اكتمال عملية البناء بنجاح.
 
 ---
 
-## 🧪 Run It Manually
+## 🧪  التشغيل اليدوي
 
-Trigger this workflow using the **"Run workflow"** button under  
+يمكنك تشغيل هذا الـ Workflow يدوياً في أي وقت عبر الضغط على زر "Run workflow" من تبويب:
 `Actions > Build Export Templates`.
 
 ---
 
-## 📸 Follow Me & Stay Updated
+## 📸 تابعني على منصات التواصل 
 
 - 🌐 GitHub:
 - 📸 Instagram: 
@@ -51,20 +50,20 @@ Trigger this workflow using the **"Run workflow"** button under
 
 ---
 
-## 🧠 Requirements
+## 🧠 المتطلبات
 
 - Set a GitHub secret called: `SCRIPT_AES256_ENCRYPTION_KEY`  
   → Go to `Settings > Secrets and variables > Actions`
 
 ---
 
-## 🤝 Contributions
+## 🤝 المساهمة والتطوير
 
-Open to improvements! Fork it, extend it, or create a PR! 🚀
+المستودع مفتوح دائماً للتحسينات! قم بعمل Fork، طوّر المشروع، أو افتح طلب سحب (PR) لإضافاتك الجديدة 🚀.
 
 ---
 
-## 🛡️ License
+## 🛡️ الترخيص
 
 MIT License — use freely, contribute kindly.
 
