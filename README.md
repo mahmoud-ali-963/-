@@ -1,7 +1,7 @@
 
 # 🚀 مُنشئ قوالب تصدير غودوت (مؤمن بتشفير AES-256) 🔐
 
-This GitHub Actions workflow automatically builds **Linux** and **Windows export templates** from the **latest stable version of Godot Engine**, with added security using an **AES-256 script** for protecting your game scripts.
+This GitHub Actions workflow automatically builds **Android** and **Windows export templates** from the **latest stable version of Godot Engine**, with added security using an **AES-256 script** for protecting your game scripts.
 
 ## 🎯 المميزات الرئيسية
 
@@ -35,16 +35,14 @@ This GitHub Actions workflow automatically builds **Linux** and **Windows export
 
 ## 📸 تابعني على منصات التواصل 
 
-- 🌐 GitHub:
-- 📸 Instagram: 
-- 📺 YouTube: 
-- 🎮 itch.io: 
+
+- 📸 Instagram: https://www.instagram.com/godotology/
+- 📺 YouTube: https://www.youtube.com/@godotology
+- 🎮 itch.io: https://mahmoud-ali-963.itch.io/
 
 ---
 
-## 📽️ Watch the Tutorial
-
-📹 عملت فيديو بيوضح الخطوات!
+## 📹 عملت فيديو بيوضح الخطوات!
 
 👉 الفيديو لازال غير جاهز رح ارفعه قريبا ان شاء الله 
 
@@ -59,7 +57,7 @@ This GitHub Actions workflow automatically builds **Linux** and **Windows export
 
 ## 🤝 المساهمة والتطوير
 
-المستودع مفتوح دائماً للتحسينات! قم بعمل Fork، طوّر المشروع، أو افتح طلب سحب (PR) لإضافاتك الجديدة 🚀.
+المشروع مفتوح دائماً للتحسينات! قم بعمل Fork، طوّر المشروع، أو افتح طلب سحب (PR) لإضافاتك الجديدة 🚀.
 
 ---
 
