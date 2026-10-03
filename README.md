@@ -1,5 +1,4 @@
-[README.md](https://github.com/user-attachments/files/33002813/README.md)
-Note: The script dont works due to godot and secure repo updates, and is not updated to latest release. 
+
 # 🚀 مُنشئ قوالب تصدير غودوت (مؤمن بتشفير AES-256) 🔐
 
 This GitHub Actions workflow automatically builds **Linux** and **Windows export templates** from the **latest stable version of Godot Engine**, with added security using an **AES-256 script** for protecting your game scripts.
