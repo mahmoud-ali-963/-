@@ -1,0 +1,106 @@
+name: Build Android Export Templates Only
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build_android_templates:
+    runs-on: ubuntu-latest
+    env:
+      SCONSFLAGS: verbose=yes warnings=all use_lto=yes
+      # استبدل هذا بالمسار الصحيح للـ SDK في Ubuntu runner
+      ANDROID_HOME: /usr/local/lib/android/sdk
+      SCRIPT_AES256_ENCRYPTION_KEY: ${{ secrets.SCRIPT_AES256_ENCRYPTION_KEY }}
+
+    steps:
+      - name: Checkout current repo
+        uses: actions/checkout@v4
+
+      - name: Set up Java (Required for Android)
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Clone latest stable Godot source into ./godot
+        run: |
+          curl -s https://api.github.com/repos/godotengine/godot/releases/latest \
+            | grep "tag_name" | cut -d '"' -f4 | xargs -I {} git clone --depth 1 --branch {} https://github.com/godotengine/godot.git godot
+
+      - name: Download AES-256 secure script
+        run: |
+          curl -L -o aes_secure.py "https://raw.githubusercontent.com/KnifeXRage/Godot-Secure/main/Godot%20Secure%20AES-256.py"
+
+      - name: Patch AES script for non-interactive use
+        run: |
+          sed -i 's/confirm = input(.*/confirm = "yes"/' aes_secure.py
+          sed -i '/exit(/d' aes_secure.py
+
+      - name: Run AES-256 secure script (non-interactive)
+        run: |
+          python3 aes_secure.py ./godot || true
+
+      - name: Install Dependencies & Android NDK
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential scons pkg-config python3 zip unzip curl git
+          # تثبيت الـ NDK المطلوب (إصدار 23b أو أحدث متوافق مع Godot 4)
+          echo "y" | ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --install "ndk;23.2.8568313" "cmake;3.22.1"
+
+      - name: Cache SCons build artifacts
+        uses: actions/cache@v3
+        with:
+          path: |
+            godot/.sconsign.dblite
+            godot/bin/
+          key: ${{ runner.os }}-godot-android-${{ hashFiles('godot/**/*.cpp', 'godot/**/*.h', 'godot/SConstruct') }}
+          restore-keys: |
+            ${{ runner.os }}-godot-android-
+
+      - name: Build Android Export Templates (Release & Debug)
+        run: |
+          cd godot
+          # بناء نسخة الـ Release لـ arm64 (الأكثر شيوعاً للهواتف الحديثة)
+          echo "Building Android arm64 Release template..."
+          scons platform=android target=template_release arch=arm64 -j2
+          
+          # بناء نسخة الـ Debug لـ arm64
+          echo "Building Android arm64 Debug template..."
+          scons platform=android target=template_debug arch=arm64 -j2
+          
+          # ملاحظة: إذا أردت دعم x86_64 للمحاكيات، يجب تكرار الأوامر مع تغيير arch=x86_64
+          cd ..
+
+      - name: Generate Android AAR Library
+        run: |
+          cd godot/platform/android/java
+          ./gradlew generateGodotTemplates
+          cd ../../../
+
+      - name: Package Android Templates
+        run: |
+          mkdir -p android_export_templates
+          # نقل ملفات الـ AAR والـ APK الناتجة
+          cp godot/bin/*.apk android_export_templates/ 2>/dev/null || true
+          cp godot/bin/*.aar android_export_templates/ 2>/dev/null || true
+          
+          cat > android_export_templates/README.txt << 'EOF'
+          Android Export Templates for Godot
+          ==================================
+          Built with AES-256 encryption.
+          Architectures: arm64-v8a
+          
+          To use:
+          1. Copy the .aar files to your project's 'android/build/libs' if using custom builds.
+          2. Or install through the Godot Editor 'Install from file' menu.
+          EOF
+          
+          (cd android_export_templates && zip -9 -r ../android_export_templates.zip .)
+
+      - name: Upload Android templates artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-export-templates
+          path: android_export_templates.zip
