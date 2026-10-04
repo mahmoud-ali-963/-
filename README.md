@@ -1,7 +1,7 @@
 
 # 🚀 مُنشئ قوالب تصدير غودوت (مؤمن بتشفير AES-256) 🔐
 
-This GitHub Actions workflow automatically builds **Android** and **Windows export templates** from the **latest stable version of Godot Engine**, with added security using an **AES-256 script** for protecting your game scripts.
+يقوم هذا الملف في جيت هب ببناء قوالب تصدير أنظمة أندرويد، ويندوز، ولينكس تلقائياً من أحدث إصدار مستقر لمحرك غودوت، مع ميزة الأمان الإضافية المتمثلة في استخدام سكريبت تشفير بحماية متقدمة لحماية ملفات اللعبة.
 
 ## 🎯 المميزات الرئيسية
 
@@ -10,6 +10,7 @@ This GitHub Actions workflow automatically builds **Android** and **Windows expo
 - ⚙️ بناء قوالب التصدير لكل من:
   -  Android
   -  Windows
+  -  Linux
 - 📦 رفع قوالب التصدير بصيغة ملفات ضغط .zip جاهزة للتحميل
 - ☁️ تفعيل التخزين المؤقت (Caching) لتسريع عمليات البناء القادمة
 
@@ -29,7 +30,7 @@ SCRIPT_AES256_ENCRYPTION_KEY
 .github/workflows/Encrypted-Godot-Build.yml
 
 ---
-## 📦 ملفات البناء الجاهزة (Artifacts)
+## 📦 ملفات البناء الجاهزة (النتيجة النهائية يعني) (Artifacts)
 
 | Platform | Artifact |
 |----------|----------|
@@ -45,8 +46,7 @@ SCRIPT_AES256_ENCRYPTION_KEY
 
 ## 🧪  التشغيل اليدوي
 
-يمكنك تشغيل هذا الـ Workflow يدوياً في أي وقت عبر الضغط على زر "Run workflow" من تبويب:
-`Actions > Build Export Templates`.
+يمكنك تشغيل هذا الـ Workflow يدوياً في أي وقت عبر الضغط على زر "Run workflow"
 
 ---
 
