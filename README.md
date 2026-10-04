@@ -14,13 +14,30 @@ This GitHub Actions workflow automatically builds **Android** and **Windows expo
 - ☁️ تفعيل التخزين المؤقت (Caching) لتسريع عمليات البناء القادمة
 
 ---
+## الخطوات المختصرة :
+اسم الريبو الجديدة :
+My-Encrypted-Godot
 
+اسم المفتاح السري في غت هب
+SCRIPT_AES256_ENCRYPTION_KEY
+
+برومت توليد مفتاح عشوائي:
+"اكتب لي مفتاح تشفير عشوائي وقوي بصيغة AES-256 مكون من 64 حرفاً سداسياً عشرياً (Hex) صالحاً للاستخدام كمفتاح سري في GitHub Secrets، وبدون أي نصوص إضافية."
+
+
+مسار و اسم الملف: 
+.github/workflows/Encrypted-Godot-Build.yml
+
+---
 ## 📦 ملفات البناء الجاهزة (Artifacts)
 
 | Platform | Artifact |
 |----------|----------|
-| Android  | `android-export-templates.zip` |
-| 🪟 Windows| `windows-export-templates.zip` |
+| 💻 Custom Editor  | `godot-custom-editor` |
+| 🐧 Linux  | `linux-export-templates.zip` |
+| 🤖 Android  | `android-export-templates.zip` |
+| 🪟  Windows| `windows-export-templates.zip` |
+
 
 ➡️ يمكنك تحميلها مباشرة من قسم Artifacts في صفحة GitHub Actions فور اكتمال عملية البناء بنجاح.
 
