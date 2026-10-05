@@ -43,7 +43,7 @@ SCRIPT_AES256_ENCRYPTION_KEY
 ➡️ يمكنك تحميلها مباشرة من قسم Artifacts في صفحة GitHub Actions فور اكتمال عملية البناء بنجاح.
 
 او اذا كنت تريد الطريقة السهلة رابط تنزيل المحرر و قوالب التصدير الجاهزة هنا :
-==سيتم ادراج الرابط هنا قريباً 
+https://github.com/mahmoud-ali-963/Godotology-Encrypted-Godot/releases/tag/Godot 
 ---
 
 ## 🧪  التشغيل اليدوي
